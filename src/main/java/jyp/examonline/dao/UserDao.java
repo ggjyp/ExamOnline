@@ -10,11 +10,11 @@ public interface UserDao {
 
     /**
      * 通过用户id查找用户
-     * @param userid
+     * @param userId
      * @return
      */
-    User findById(int userid);
+    User findById(int userId);
 
-    User findByPwd(@Param("username") String username, @Param("pwd") String pwd);
+    User findByPwd(@Param("userName") String username, @Param("userPwd") String pwd);
 
 }

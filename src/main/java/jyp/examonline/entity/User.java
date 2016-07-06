@@ -6,135 +6,135 @@ import java.util.Date;
  * Created by jyp on 2016/7/5.
  */
 public class User {
-    private int user_id;
-    private String user_name;
-    private String user_pwd;
+    private int userId;
+    private String userName;
+    private String userPwd;
     //学号，学生角色特有，其他角色为空
-    private String user_num;
-    private int user_status;
-    private Date user_createdate;
-    private Date user_deletedate;
-    private String user_phone;
-    private String user_email;
+    private String userNum;
+    private int userStatus;
+    private Date userCreatedate;
+    private Date userDeletedate;
+    private String userPhone;
+    private String userEmail;
 
     public User(){
 
     }
 
-    public User(int user_id, String user_name, String user_pwd, String user_num, int user_status, Date user_createdate, Date user_deletedate, String user_phone, String user_email) {
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.user_pwd = user_pwd;
-        this.user_num = user_num;
-        this.user_status = user_status;
-        this.user_createdate = user_createdate;
-        this.user_deletedate = user_deletedate;
-        this.user_phone = user_phone;
-        this.user_email = user_email;
+    public User(int userId, String userName, String userPwd, String userNum, int userStatus, Date userCreatedate, Date userDeletedate, String userPhone, String userEmail) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPwd = userPwd;
+        this.userNum = userNum;
+        this.userStatus = userStatus;
+        this.userCreatedate = userCreatedate;
+        this.userDeletedate = userDeletedate;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
     }
 
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 
-    public String getUser_pwd() {
-        return user_pwd;
+    public String getUserPwd() {
+        return userPwd;
     }
 
 
-    public void setUser_pwd(String user_pwd) {
-        this.user_pwd = user_pwd;
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
     }
 
 
-    public String getUser_num() {
-        return user_num;
+    public String getUserNum() {
+        return userNum;
     }
 
 
-    public void setUser_num(String user_num) {
-        this.user_num = user_num;
+    public void setUserNum(String userNum) {
+        this.userNum = userNum;
     }
 
 
-    public int getUser_status() {
-        return user_status;
+    public int getUserStatus() {
+        return userStatus;
     }
 
 
-    public void setUser_status(int user_status) {
-        this.user_status = user_status;
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 
 
-    public Date getUser_createdate() {
-        return user_createdate;
+    public Date getUserCreatedate() {
+        return userCreatedate;
     }
 
 
-    public void setUser_createdate(Date user_createdate) {
-        this.user_createdate = user_createdate;
+    public void setUserCreatedate(Date userCreatedate) {
+        this.userCreatedate = userCreatedate;
     }
 
 
-    public Date getUser_deletedate() {
-        return user_deletedate;
+    public Date getUserDeletedate() {
+        return userDeletedate;
     }
 
 
-    public void setUser_deletedate(Date user_deletedate) {
-        this.user_deletedate = user_deletedate;
+    public void setUserDeletedate(Date userDeletedate) {
+        this.userDeletedate = userDeletedate;
     }
 
 
-    public String getUser_phone() {
-        return user_phone;
+    public String getUserPhone() {
+        return userPhone;
     }
 
 
-    public void setUser_phone(String user_phone) {
-        this.user_phone = user_phone;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
 
-    public String getUser_email() {
-        return user_email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
 
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
 
     @Override public String toString() {
         return "User{" +
-            "user_id=" + user_id +
-            ", user_name='" + user_name + '\'' +
-            ", user_pwd='" + user_pwd + '\'' +
-            ", user_num='" + user_num + '\'' +
-            ", user_status=" + user_status +
-            ", user_createdate=" + user_createdate +
-            ", user_deletedate=" + user_deletedate +
-            ", user_phone='" + user_phone + '\'' +
-            ", user_email='" + user_email + '\'' +
+            "userId=" + userId +
+            ", userName='" + userName + '\'' +
+            ", userPwd='" + userPwd + '\'' +
+            ", userNum='" + userNum + '\'' +
+            ", userStatus=" + userStatus +
+            ", userCreatedate=" + userCreatedate +
+            ", userDeletedate=" + userDeletedate +
+            ", userPhone='" + userPhone + '\'' +
+            ", userEmail='" + userEmail + '\'' +
             '}';
     }
 }

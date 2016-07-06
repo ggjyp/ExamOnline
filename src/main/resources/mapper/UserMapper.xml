@@ -7,26 +7,20 @@
     <select id="findById" resultType="User" parameterType="int">
         <!-- 具体的sql -->
         SELECT
-        user_id,
-        user_name,
-        user_pwd,
-        user_status
+        *
         FROM
         user
         WHERE
-        user_id = #{userid}
+        user_id = #{userId}
     </select>
 
     <select id="findByPwd" resultType="User">
         SELECT
-        user_id,
-        user_name,
-        user_pwd,
-        user_status
+        *
         FROM
         user
         WHERE
-        user_name = #{username} and user_pwd = #{pwd}
+        user_name = #{userName} and user_pwd = #{userPwd}
     </select>
 
 </mapper>
