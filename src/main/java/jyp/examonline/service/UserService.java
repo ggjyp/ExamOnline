@@ -15,4 +15,17 @@ public interface UserService {
      */
     User login(String username, String pwd);
 
+    /**
+     *注册用户
+     * @param user 用户实体
+     * @return 成功返回1，失败返回0
+     */
+    int register(User user);
+
+    /**
+     * 检验用户名是否被占用
+     * @param userName 用户名
+     * @return
+     */
+    int checkUserName(String userName);
 }

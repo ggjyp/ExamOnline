@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3661795329">
+  <component name="DataSourceManagerImpl" format="xml" hash="1079601675">
     <data-source source="LOCAL" name="MySQL - examonline@localhost" uuid="eae9e3bb-eb67-4257-b905-b4284378d562">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

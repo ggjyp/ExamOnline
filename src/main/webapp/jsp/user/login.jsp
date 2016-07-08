@@ -41,18 +41,21 @@
           <%--用户名--%>
           <div class="am-input-group am-form-group">
             <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-            <input type="text" class="am-form-field" name="name" placeholder="用户名">
+            <input type="text" class="am-form-field" name="userName" placeholder="用户名">
           </div>
           <%--密码--%>
           <div class="am-input-group am-form-group">
             <span class="am-input-group-label"><i class="am-icon-lock am-icon-fw"></i></span>
-            <input type="password" class="am-form-field" name="pwd" placeholder="密码">
+            <input type="password" class="am-form-field" name="userPwd" placeholder="密码">
           </div>
 
           <div class="am-cf">
             <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+            <button type="button" onClick="window.location.href='/jsp/user/register.jsp'" class="am-btn am-btn-success am-btn-sm am-fl">注册 </button>
             <input type="submit" name="" value="忘记密码" class="am-btn am-btn-default am-btn-sm am-fr">
           </div>
+
+
 
         </form>
 
