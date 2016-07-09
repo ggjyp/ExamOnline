@@ -19,4 +19,23 @@ public class SubjectDaoTest extends BaseTest {
         System.out.println(subject.toString());
     }
 
+    @Test
+    public void testInsert(){
+        Subject subject = new Subject();
+        subject.setSubjectName("软件工程");
+
+        System.out.println(subjectDao.addSubject(subject));
+    }
+
+    @Test
+    public void testUpdate(){
+        Subject subject = subjectDao.findById(1);
+        subject.setSubjectName("测试学科");
+        subjectDao.modifySubject(subject);
+    }
+
+    @Test
+    public void testDelete(){
+        subjectDao.deleteSubject(1);
+    }
 }

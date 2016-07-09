@@ -11,6 +11,10 @@ public class Subject {
     private Date subjectCreateDate;
     private Date subjectDeleteDate;
 
+    public Subject(){
+
+    }
+
 
     public Subject(int subjectId, String subjectName, Date subjectCreateDate, Date subjectDeleteDate) {
         this.subjectId = subjectId;

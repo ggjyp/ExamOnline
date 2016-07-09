@@ -4,8 +4,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="/js/jquery-1.11.3.min.js" ></script>
-    <script type="text/javascript" src="/js/registerCheck.js" ></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/jquery-1.11.3.min.js" ></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/registerCheck.js" ></script>
     <title>注册验证</title>
 </head>
 <body>
