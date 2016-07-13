@@ -29,7 +29,7 @@ import static jyp.examonline.util.StringValue.*;
  * Created by jyp on 2016/7/6.
  */
 @Controller("userController")
-@RequestMapping("/jsp")// url:/模块/资源/{id}/细分 /seckill/list
+@RequestMapping("/jsp/user")// url:/模块/资源/{id}/细分 /seckill/list
 public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -37,12 +37,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private SubjectService subjectService;
-
-
     //通用用户功能
-    @RequestMapping("/user/login")
+    @RequestMapping("/login")
     public String login(User u) {
         User user = userService.login(u.getUserName(), u.getUserPwd());
         if ( user != null)
@@ -53,22 +49,16 @@ public class UserController {
                 return "/teacher/main";
             else
             //否则进入管理员页面
-                return "/admin/main";
+                return "redirect:/jsp/admin/subject";
         }
 
         else
             return "/user/login";
     }
 
-    @RequestMapping(value="/user/register/check_username",method = RequestMethod.POST)
-    public String checkUserName(String userName, HttpServletResponse response) throws
-                                                                                          IOException {
-        //检验用户名是否存在
-        // User user = new User();
-        int num = 0;
-        num = userService.checkUserName(userName);
-        //用户名是否存在的标志
-
+    @RequestMapping(value="/register/check_username",method = RequestMethod.POST)
+    public String checkUserName(String userName, HttpServletResponse response) throws IOException {
+        int num = userService.checkUserName(userName);
         boolean flag=false;
         if(num >0){
             flag=true;
@@ -87,7 +77,7 @@ public class UserController {
         return null;
     }
 
-    @RequestMapping(value="/user/register/successed")
+    @RequestMapping(value="/register/successed")
     public String  successed(User user) throws IOException{
         //新增用户插入数据库
         user.setUserStatus(1);
@@ -95,30 +85,6 @@ public class UserController {
         return "/user/login";
     }
 
-    //管理员用户功能
-    //显示学科
-    @RequestMapping(value="/admin/subjectList", method = RequestMethod.POST)
-    public String subjectList(@RequestBody Page page, HttpServletResponse response) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        PrintWriter pw = response.getWriter();
-        //页面大小
-        int pageSize = page.getPageSize();
-        //当前页码
-        int pageNumber = page.getPageNumber();
 
-        //根据当前页码和页面大小获取学科记录表
-        List<Subject> subjectList = subjectService.findSubjectByPage(pageNumber, pageSize);
-        //获取总记录数
-        int total = subjectService.countSubjectList();
-        //将数据转换成json
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("total", total);
-        map.put("rows", subjectList);
-        String json = JSONObject.valueToString(map);
-
-        //返回JSON数据
-        pw.print(json);
-        return null;
-    }
 
 }

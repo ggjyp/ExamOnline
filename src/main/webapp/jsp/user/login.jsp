@@ -51,7 +51,7 @@
 
           <div class="am-cf">
             <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-            <button type="button" onClick="window.location.href='/jsp/user/register.jsp'" class="am-btn am-btn-success am-btn-sm am-fl">注册 </button>
+            <button type="button" onClick="window.location.href='/user/register.jsp'" class="am-btn am-btn-success am-btn-sm am-fl">注册 </button>
             <input type="submit" name="" value="忘记密码" class="am-btn am-btn-default am-btn-sm am-fr">
           </div>
 

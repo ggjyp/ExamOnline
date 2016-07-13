@@ -28,7 +28,7 @@ public interface SubjectDao {
      * @param subject
      * @return
      */
-    void modifySubject(Subject subject);
+    int modifySubject(Subject subject);
 
     /**
      * 根据学科编号查找学科

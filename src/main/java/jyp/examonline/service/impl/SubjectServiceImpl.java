@@ -20,9 +20,19 @@ public class SubjectServiceImpl implements SubjectService {
     @Autowired
     private SubjectDao subjectDao;
     //
-    // @Override public boolean addSubject(Subject subject) {
-    //     return subjectDao.addSubject(subject);
-    // }
+    @Override public int addSubject(Subject subject) {
+        return subjectDao.addSubject(subject);
+    }
+
+
+    @Override public int deleteSubject(int subjectId) {
+        return subjectDao.deleteSubject(subjectId);
+    }
+
+
+    @Override public int modifySubject(Subject subject) {
+        return subjectDao.modifySubject(subject);
+    }
 
 
     @Override public List<Subject> findSubjectByPage(int pageNumber, int pageSize) {

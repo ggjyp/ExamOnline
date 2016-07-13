@@ -21,7 +21,7 @@
     </select>
 
     <select id="findSubjectByPage" resultType="Subject">
-        SELECT * FROM subject limit #{pageNumber},#{pageSize}
+        SELECT * FROM subject where subject_delete_date is null limit #{pageNumber},#{pageSize}
     </select>
 
     <select id="countAllSubject" resultType="int">
