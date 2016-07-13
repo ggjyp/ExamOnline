@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>jyp的在线考试系统</title>
-    <meta name="description" content="后台管理界面">
+    <meta name="description" content="教师管理界面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -36,7 +36,7 @@
             <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
             <li class="am-dropdown" data-am-dropdown>
                 <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-                    <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+                    <span class="am-icon-users"></span> 教师 <span class="am-icon-caret-down"></span>
                 </a>
                 <ul class="am-dropdown-content">
                     <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
@@ -54,11 +54,11 @@
     <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
-                <li><a href="admin-index.html"><span class="am-icon-home"></span> 人员管理</a></li>
-                <li><a href="#"><span class="am-icon-table"></span> 学科管理</a></li>
+                <li><a href="admin-index.html"><span class="am-icon-home"></span> 试题管理</a></li>
+                <li><a href="#"><span class="am-icon-table"></span> 考试管理</a></li>
+                <li><a href="#"><span class="am-icon-table"></span> 成绩管理</a></li>
                 <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
             </ul>
-
         </div>
     </div>
     <!-- sidebar end -->
@@ -69,13 +69,13 @@
         <!--导航条-->
 
             <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">人员管理</strong> / <small>人员列表</small></div>
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">试题管理</strong> / <small>试题列表</small></div>
             </div>
         <!--把主内容放在这里-->
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" onClick="window.location.href='./subjectAdd'"  class="am-btn am-btn-default" ><span class="am-icon-plus"></span> 新增</button>
+                    <button type="button" onClick="window.location.href='./questionAdd'"  class="am-btn am-btn-default" ><span class="am-icon-plus"></span> 新增</button>
                 </div>
             </div>
         </div>
@@ -89,14 +89,19 @@
                         <div class="am-u-sm-12">
                             <!--添加题目表-->
                             <!--data-toggle="table"是启用bootstrap Table插件的标识-->
-                            <table  id="cusTable" data-toggle="table" >
+                            <table  id="questionTable" data-toggle="table" >
                                 <thead>
                                 <tr>
                                     <%--data-field的值为Entity类的属性值，不是数据库字段--%>
-                                    <th data-field="subjectId" >科目ID</th>
+                                    <th data-field="questionId" >试题ID</th>
+                                    <%--科目名称来自QuestionSubject辅助类--%>
                                     <th data-field="subjectName">科目名称</th>
-                                    <th data-field="subjectCreateDate">创建时间</th>
-                                        <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+                                    <th data-field="questionBody">试题内容</th>
+                                    <th data-field="questionDifficulty">试题难度</th>
+                                    <th data-field="questionScore">试题分数</th>
+                                    <th data-field="answer">正确答案</th>
+                                    <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+
                                 </tr>
                                 </thead>
                             </table>
@@ -130,17 +135,17 @@
 <script type="text/javascript">9
 function initTable() {
     //先销毁表格
-    $('#cusTable').bootstrapTable('destroy');
+    $('#questionTable').bootstrapTable('destroy');
     //初始化表格,动态从服务器加载数据
-    $("#cusTable").bootstrapTable({
-        method: "post",  //使用get请求到服务器获取数据
-        url: "/jsp/admin/subjectList", //获取数据的Servlet地址
+    $("#questionTable").bootstrapTable({
+        method: "post",  //使用post请求到服务器获取数据
+        url: "/jsp/teacher/questionList", //获取数据的Servlet地址
         striped: true,  //表格显示条纹
         pagination: true, //启动分页
         pageSize: 10,  //每页显示的记录数
         pageNumber:1, //当前第几页
         pageList: [5, 10, 15, 20, 25],  //记录数可选列表
-        search: true,  //是否启用查询
+        search: false,  //是否启用查询
         showColumns: true,  //显示下拉框勾选要显示的列
         showRefresh: true,  //显示刷新按钮
         sidePagination: "server", //表示服务端请求
@@ -180,18 +185,18 @@ window.actionEvents = {
     'click .edit': function (e, value, row, index) {
         //获取当前行对象
         var obj = jQuery.parseJSON(JSON.stringify(row));
-        window.location.href='/jsp/admin/subjectEdit?subjectId='+obj.subjectId
+        window.location.href='/jsp/teacher/questionEdit?questionId='+obj.questionId
         //注：这个是异步的，不适合跳转场合
 //        $.get("/jsp/admin/subject/edit", { subjectId: obj.subjectId}, function(xhr ){
 //        });
     },
     'click .delete': function (e, value, row, index) {
-        var r=confirm("确认删除该学科?");
+        var r=confirm("确认删除该试题?");
         if (r==true)
         {
             $.ajax({ //一个Ajax过程
                 type: "post", //以post方式与后台沟通
-                url :"/jsp/admin/subjectDelete", //与此页面沟通
+                url :"/jsp/teacher/questionDelete", //与此页面沟通
                 dataType:'json',//返回的值以 JSON方式 解释
                 data:JSON.parse(JSON.stringify(row)), //发给的数据
                 success: function(json){//如果调用成功

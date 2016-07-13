@@ -19,27 +19,11 @@ public class Question {
     private String answer;
     private Date questionCreateDate;
     private Date questionDeleteDate;
+    private int subjectId;
 
     public Question(){
-        
-    }
-    
-    public Question(int questionId, int questionDifficulty, Subject subject, int questionScore, String questionBody, String optionA, String optionB, String optionC, String optionD, String imgUrl, String answer, Date questionCreateDate, Date questionDeleteDate) {
-        this.questionId = questionId;
-        this.questionDifficulty = questionDifficulty;
-        this.subject = subject;
-        this.questionScore = questionScore;
-        this.questionBody = questionBody;
-        this.optionA = optionA;
-        this.optionB = optionB;
-        this.optionC = optionC;
-        this.optionD = optionD;
-        this.imgUrl = imgUrl;
-        this.answer = answer;
-        this.questionCreateDate = questionCreateDate;
-        this.questionDeleteDate = questionDeleteDate;
-    }
 
+    }
 
     public int getQuestionId() {
         return questionId;
@@ -71,12 +55,12 @@ public class Question {
     }
 
 
-    public int getquestionScore() {
+    public int getQuestionScore() {
         return questionScore;
     }
 
 
-    public void setquestionScore(int questionScore) {
+    public void setQuestionScore(int questionScore) {
         this.questionScore = questionScore;
     }
 
@@ -171,21 +155,12 @@ public class Question {
     }
 
 
-    @Override public String toString() {
-        return "Question{" +
-            "questionId=" + questionId +
-            ", questionDifficulty=" + questionDifficulty +
-            ", subject=" + subject +
-            ", questionScore=" + questionScore +
-            ", questionBody='" + questionBody + '\'' +
-            ", optionA='" + optionA + '\'' +
-            ", optionB='" + optionB + '\'' +
-            ", optionC='" + optionC + '\'' +
-            ", optionD='" + optionD + '\'' +
-            ", imgUrl='" + imgUrl + '\'' +
-            ", answer='" + answer + '\'' +
-            ", questionCreateDate=" + questionCreateDate +
-            ", questionDeleteDate=" + questionDeleteDate +
-            '}';
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 }

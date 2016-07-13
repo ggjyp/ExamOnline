@@ -2,7 +2,6 @@ package jyp.examonline.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Administrator on 2016/7/11.
  */
 @Controller("adminController")
-@RequestMapping("/jsp/admin")// url:/模块/资源/{id}/细分 /seckill/list
+@RequestMapping("/jsp/admin")
 public class AdminController {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    // private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     SubjectService subjectService;

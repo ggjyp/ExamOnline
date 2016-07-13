@@ -14,7 +14,7 @@ public class SubjectDaoTest extends BaseTest {
 
     @Test
     public void findByIdTest(){
-        int subjectId = 0;
+        int subjectId = 4;
         Subject subject = subjectDao.findById(subjectId);
         System.out.println(subject.toString());
     }

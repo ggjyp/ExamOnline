@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jyp.examonline.dao.QuestionDao">
+    <insert id="addQuestion" parameterType="Question">
+        insert into question
+        (question_difficulty,subject_id,question_score,question_body,option_a,option_b,option_c,option_d,img_url,answer,question_create_date)
+        VALUES
+        (
+          #{questionDifficulty},#{subjectId},#{questionScore},#{questionBody},#{optionA},#{optionB},#{optionC},#{optionD},#{imgUrl},#{answer},#{questionCreateDate}
+        )
+    </insert>
+
+    <update id="modifyQuestion" parameterType="Question">
+        UPDATE question
+        set question_difficulty = #{questionDifficulty},
+         subject_id = #{subjectId},
+         question_score = #{questionScore},
+         question_body = #{questionBody},
+         option_a = #{optionA},
+         option_b = #{optionB},
+         option_c = #{optionC},
+         option_d = #{optionD},
+         img_url = #{imgUrl},
+         answer = #{answer}
+        where question_id = #{questionId}
+    </update>
+    <delete id="deleteQuestion" parameterType="int">
+        update question
+        set question_delete_date = sysdate()
+        where question_id = #{questionId}
+    </delete>
+
+
+
+    <select id="findQuestionByPage" resultType="QuestionSubject">
+        SELECT
+        q.*,
+        s.subject_name,
+        s.subject_create_date,
+        s.subject_delete_date
+        FROM
+        question q, subject s
+        where
+        q.subject_id = s.subject_id
+        and
+        question_delete_date is null limit #{pageNumber},#{pageSize}
+
+    </select>
+
+    <select id="countAllQuestion" resultType="int">
+        select count(*) from question where question_delete_date is null
+    </select>
+
+    <select id="findQuestionById" parameterType="int"  resultMap="ClassResultMap">
+        select * from question q, subject s where q.subject_id=s.subject_id and q.question_id=#{questionId}
+    </select>
+
+    <resultMap type="jyp.examonline.entity.Question" id="ClassResultMap">
+        <id property="questionId" column="question_id"/>
+        <result property="questionDifficulty" column="question_difficulty"/>
+        <result property="questionScore" column="question_score"/>
+        <result property="questionBody" column="question_body"/>
+        <result property="optionA" column="option_a"/>
+        <result property="optionB" column="option_b"/>
+        <result property="optionC" column="option_c"/>
+        <result property="optionD" column="option_d"/>
+        <result property="imgUrl" column="img_url"/>
+        <result property="answer" column="answer"/>
+        <result property="questionCreateDate" column="question_create_date"/>
+        <result property="questionDeleteDate" column="question_delete_date"/>
+        <association property="subject" javaType="jyp.examonline.entity.Subject">
+            <id property="subjectId" column="subject_id"/>
+            <result property="subjectName" column="subject_name"/>
+            <result property="subjectCreateDate" column="subject_create_date"/>
+            <result property="subjectDeleteDate" column="subject_delete_date"/>
+        </association>
+    </resultMap>
+
+</mapper>

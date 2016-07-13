@@ -46,7 +46,7 @@ public class UserController {
             if (user.getUserStatus() == STATUS_STUDENT)
                 return "/student/main";
             else if(user.getUserStatus() == STATUS_TEACHER)
-                return "/teacher/main";
+                return "redirect:/jsp/teacher/question";
             else
             //否则进入管理员页面
                 return "redirect:/jsp/admin/subject";
