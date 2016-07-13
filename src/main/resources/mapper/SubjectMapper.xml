@@ -25,7 +25,7 @@
     </select>
 
     <select id="countAllSubject" resultType="int">
-        SELECT COUNT(*) FROM  subject
+        SELECT COUNT(*) FROM  subject where subject_delete_date is null
     </select>
 
 </mapper>
